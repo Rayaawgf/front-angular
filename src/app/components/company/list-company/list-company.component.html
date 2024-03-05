@@ -1,0 +1,26 @@
+<h2>List of Companies</h2>
+
+<div *ngIf="companies && companies.length > 0; else noCompanies">
+  <table>
+    <thead>
+      <tr>
+        <th>Company Name</th>
+    
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let company of companies">
+        <td>{{ company.nom }}</td>
+      
+        <td>
+          <button (click)="deleteCompany(company.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noCompanies>
+  <p>No companies available.</p>
+</ng-template>

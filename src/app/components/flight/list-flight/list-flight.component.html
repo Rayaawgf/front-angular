@@ -1,0 +1,32 @@
+<h2>List of Flights</h2>
+
+<div *ngIf="flights && flights.length > 0; else noFlights">
+  <table>
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Departure City</th>
+        <th>Arrival City</th>
+        <th>Departure Date</th>
+        <th>Arrival Date</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <td>{{ flight.flightNumber }}</td>
+        <td>{{ flight.departureCity }}</td>
+        <td>{{ flight.arrivalCity }}</td>
+        <td>{{ flight.departureDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ flight.arrivalDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ flight.price }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noFlights>
+  <p>No flights available.</p>
+</ng-template>
