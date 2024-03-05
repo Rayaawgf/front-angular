@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-<<<<<<< HEAD
-
-=======
 import { HttpClientModule } from '@angular/common/http'; 
->>>>>>> master
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
-<<<<<<< HEAD
-=======
 import { ListFlightComponent } from './components/flight/list-flight/list-flight.component';
 import { UpdateFlightComponent } from './components/flight/update-flight/update-flight.component';
 import { CreateFlightComponent } from './components/flight/create-flight/create-flight.component';
@@ -21,19 +15,11 @@ import { CreateCompanyComponent } from './components/company/create-company/crea
 import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
 import { ListCompanyComponent } from './components/company/list-company/list-company.component';
 
->>>>>>> master
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-<<<<<<< HEAD
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-=======
     LoginComponent,
     ListFlightComponent,
     UpdateFlightComponent,
@@ -50,7 +36,6 @@ import { ListCompanyComponent } from './components/company/list-company/list-com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule 
->>>>>>> master
   ],
   providers: [],
   bootstrap: [AppComponent]
