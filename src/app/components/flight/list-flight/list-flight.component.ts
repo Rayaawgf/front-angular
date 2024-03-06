@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlightService } from '../../../services/flight-service.service';
 import { Flight } from '../../../models/flight';
 import { HttpClient } from '@angular/common/http';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-list-flight',
   templateUrl: './list-flight.component.html',

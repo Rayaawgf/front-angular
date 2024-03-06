@@ -5,14 +5,12 @@
     <thead>
       <tr>
         <th>Company Name</th>
-    
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let company of companies">
         <td>{{ company.nom }}</td>
-      
         <td>
           <button (click)="deleteCompany(company.id)">Delete</button>
         </td>

@@ -1,1 +1,36 @@
-<p>list-ticket works!</p>
+<h2>List of Tickets</h2>
+
+<div *ngIf="tickets && tickets.length > 0; else noTickets">
+  <table>
+    <thead>
+      <tr>
+        <th>Ticket Number</th>
+        <th>Price</th>
+        <th>Ticket Class</th>
+        <th>Number of Tickets Available</th>
+        <th>Flight</th>
+        <th>Creation Time</th>
+        <th>Reservations</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.ticketNumber }}</td>
+        <td>{{ ticket.price }}</td>
+        <td>{{ ticket.ticketClass }}</td>
+        <td>{{ ticket.numberOfTicketsAvailable }}</td>
+        <td>{{ ticket.flight }}</td>
+        <td>{{ ticket.creationTime  }}</td>
+        <td>{{ ticket.reservations }}</td>
+        <td>
+          <button >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noTickets>
+  <p>No tickets available.</p>
+</ng-template>

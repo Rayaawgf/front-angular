@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyAerienneService } from '../../../services/company-aerienne-service.service';
-
 import { CompanyAerienne } from '../../../models/company-aerienne';
+
 @Component({
   selector: 'app-list-company',
   templateUrl: './list-company.component.html',
@@ -9,7 +9,7 @@ import { CompanyAerienne } from '../../../models/company-aerienne';
 })
 export class ListCompanyComponent implements OnInit {
   
-  companies!: CompanyAerienne[];
+  companies: CompanyAerienne[] = [];
 
   constructor(private companyService: CompanyAerienneService) { }
 

@@ -7,7 +7,7 @@ export class Flight {
     departureDate: Date;
     arrivalDate: Date;
     price: number;
-    companyAerienne: CompanyAerienne;
+    companyAerienne?: CompanyAerienne;
 
     constructor(
         flightNumber: string,
