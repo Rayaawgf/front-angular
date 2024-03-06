@@ -1,11 +1,16 @@
 import { UserReservation } from './user-reservation';
 export class User {
-    id: number;
+    id?: number;
     username: string;
     email: string;
     password: string;
-    isAdmin: boolean;
-    reservations: UserReservation[] = [];
+    isAdmin?: boolean;
+    reservations?: UserReservation[] ;
+
+
+
+    
+
 
     constructor(id : number ,username: string, email: string, password: string) {
         this.id = id ;
