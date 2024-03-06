@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+# front-angular
+=======
+=======
+>>>>>>> 7a4f5ea (Initial commit)
+=======
+>>>>>>> master
 # RimBestPrice
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
@@ -25,3 +34,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e6a2edf (initial commit)
+=======
+=======
+# front-angular
+>>>>>>> 3057cdc (Initial commit)
+>>>>>>> 7a4f5ea (Initial commit)
+=======
+>>>>>>> master
