@@ -22,4 +22,20 @@ export class NavbarComponent {
   isAuthenticated(): Observable<boolean> {
     return this.authService.isAuthenticated();
   }
+
+  isMenuOpen: boolean = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  isModalOpen: boolean = false;
+
+  toggleModal() {
+    this.isModalOpen = !this.isModalOpen;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
 }
