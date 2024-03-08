@@ -15,10 +15,11 @@ import { CreateCompanyComponent } from './components/company/create-company/crea
 import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
 import { ListCompanyComponent } from './components/company/list-company/list-company.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DashbordComponent } from './components/dashbord/dashbord.component';
 
 @NgModule({
   declarations: [
-    FormsModule,
     AppComponent,
     RegistrationComponent,
     LoginComponent,
@@ -31,12 +32,16 @@ import { FormsModule } from '@angular/forms';
     CreateCompanyComponent,
     UpdateCompanyComponent,
     ListCompanyComponent,
+    DashbordComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule 
+    HttpClientModule ,
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,9 @@ import { Flight } from '../models/flight';
   providedIn: 'root'
 })
 export class FlightService {
+  getAllCompanies() {
+    throw new Error('Method not implemented.');
+  }
 
   readonly baseUrl = 'http://localhost:8080/api/flights';
 
