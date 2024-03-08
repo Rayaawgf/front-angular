@@ -31,7 +31,7 @@ export class LoginComponent {
           this.router.navigate(['/dashbord']);
         } else {
           // Rediriger vers la page d'accueil
-          this.router.navigate(['/flights']);
+          this.router.navigate(['']);
         }
       },
       error => {

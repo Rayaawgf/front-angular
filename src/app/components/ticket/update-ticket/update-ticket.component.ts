@@ -63,7 +63,7 @@ export class UpdateTicketComponent implements OnInit {
       this.ticketService.updateTicket(this.ticket.id, updatedTicket).subscribe(
         () => {
           // Ticket mis à jour avec succès, effectuez des actions supplémentaires si nécessaire
-          this.router.navigate(['/list-ticket']);
+          this.router.navigate(['/tickets']);
         },
         error => {
           this.error = 'Erreur lors de la mise à jour du ticket';

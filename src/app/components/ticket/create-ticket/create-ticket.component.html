@@ -1,8 +1,8 @@
-<div [formGroup]="ticketForm">
+<div [formGroup]="ticketForm" class="ticket-form">
   <div class="form-group">
-    <label for="flightNumber">Vol:</label>
+    <label for="flightId">Vol:</label>
     <select formControlName="flightId" id="flightId">
-      <option *ngFor="let flight of flights" [value]="flight">{{ flight.flightNumber }}</option>
+      <option *ngFor="let flight of flights" [value]="flight.id">{{ flight.flightNumber }}</option>
     </select>
   </div>
   <div class="form-group">

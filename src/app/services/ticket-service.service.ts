@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Ticket } from '../models/ticket';
+import { Flight } from '../models/flight';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
 
-  private apiUrl = 'http://localhost:8080/api/tickets';
+  private readonly apiUrl = 'http://localhost:8080/api/tickets';
+  private readonly flightApiUrl = 'http://localhost:8080/api/flights';
 
   constructor(private http: HttpClient) { }
 
+  // Ticket Endpoints
   getAllTickets(): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(this.apiUrl);
   }
@@ -33,9 +37,12 @@ export class TicketService {
   }
 
   findCheapestTickets(searchCriteria: any): Observable<Ticket[]> {
-    const params = new HttpParams({
-      fromObject: searchCriteria
-    });
+    const params = new HttpParams({ fromObject: searchCriteria });
     return this.http.get<Ticket[]>(`${this.apiUrl}/search`, { params });
+  }
+
+  // Flight Endpoints
+  getAllFlights(): Observable<Flight[]> {
+    return this.http.get<Flight[]>(this.flightApiUrl);
   }
 }
