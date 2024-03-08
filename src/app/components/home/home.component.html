@@ -24,7 +24,7 @@
   <button type="submit">Rechercher</button>
 </form>
 
-<div *ngIf="cheapestTickets">
+<div *ngIf="cheapestTickets.length > 0">
   <h3>Billets les moins chers:</h3>
   <ul>
     <li *ngFor="let ticket of cheapestTickets">

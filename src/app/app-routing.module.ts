@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'update/:id', component: UpdateFlightComponent }, // Using a parameter for flight ID
   { path: 'tickets/create', component: CreateTicketComponent },
   { path: 'tickets', component: ListTicketComponent },
-  { path: 'tickets/:id/edit', component: UpdateTicketComponent }, // Using a parameter for ticket ID
+  { path: 'update-tick/:id', component: UpdateTicketComponent }, // Using a parameter for ticket ID
   { path: 'companies', component: ListCompanyComponent },
   { path: 'companies/create', component: CreateCompanyComponent },
   { path: 'update-compa/:id', component: UpdateCompanyComponent }, // Using a parameter for company ID

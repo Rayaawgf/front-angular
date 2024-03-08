@@ -11,8 +11,8 @@
         <th>Ticket Class</th>
         <th>Number of Tickets Available</th>
         <th>Flight</th>
-        <th>Creation Time</th>
-        <th>Reservations</th>
+        
+        
         <th>Actions</th>
       </tr>
     </thead>
@@ -23,9 +23,10 @@
         <td>{{ ticket.ticketClass }}</td>
         <td>{{ ticket.numberOfTicketsAvailable }}</td>
         <td>{{ ticket.flightId }}</td>
-        <td>{{ ticket.creationTime  }}</td>
+        
         
         <td>
+          <button [routerLink]="['/update-tick', ticket.id]">Mettre à jour</button>
           <button >Delete</button>
         </td>
       </tr>

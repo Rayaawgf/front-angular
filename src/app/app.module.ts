@@ -25,6 +25,7 @@ import { HomeComponent } from './components/home/home.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { HomeComponent } from './components/home/home.component';
     ListCompanyComponent,
     DashbordComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+   
    
   ],
   imports: [
