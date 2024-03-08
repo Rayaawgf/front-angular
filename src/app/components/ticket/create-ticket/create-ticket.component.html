@@ -1,1 +1,32 @@
-<p>create-ticket works!</p>
+<div [formGroup]="ticketForm">
+  <div class="form-group">
+    <label for="flightNumber">Vol:</label>
+    <select formControlName="flightId" id="flightId">
+      <option *ngFor="let flight of flights" [value]="flight.id">{{ flight.flightNumber }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="ticketNumber">Numéro de ticket:</label>
+    <input type="text" formControlName="ticketNumber" id="ticketNumber">
+  </div>
+  <div class="form-group">
+    <label for="price">Prix:</label>
+    <input type="number" formControlName="price" id="price">
+  </div>
+  <div class="form-group">
+    <label for="ticketClass">Classe de ticket:</label>
+    <select formControlName="ticketClass" id="ticketClass">
+      <option value="ECONOMY">Classe économique</option>
+      <option value="BUSINESS">Classe affaires</option>
+      <option value="FIRST_CLASS">Première classe</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="numberOfTicketsAvailable">Nombre de tickets disponibles:</label>
+    <input type="number" formControlName="numberOfTicketsAvailable" id="numberOfTicketsAvailable">
+  </div>
+
+  <button type="button" (click)="createTicket()">Créer un ticket</button>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+</div>

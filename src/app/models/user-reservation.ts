@@ -1,5 +1,6 @@
 import { User } from './user';
 import { Ticket } from './ticket';
+import { Flight } from './flight'; // Assurez-vous d'importer correctement le modèle Flight
 
 export class UserReservation {
 
@@ -13,11 +14,7 @@ export class UserReservation {
         this.reservationTime = reservationTime;
     }
 
-    canModifyReservation(): boolean {
-        const timeDifference = new Date().getTime() - this.ticket.flight.departureDate.getTime();
-        return timeDifference <= 48 * 60 * 60 * 1000;
-    }
-
+   
     toString(): string {
         return `UserReservation{ user=${this.user.id}, ticket=${this.ticket.ticketNumber}, reservationTime=${this.reservationTime}}`;
     }
