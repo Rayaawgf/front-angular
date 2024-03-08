@@ -1,4 +1,6 @@
+<button routerLink="/flights/create">Créer un vol</button>
 <h2>List of Flights</h2>
+
 
 <div *ngIf="flights && flights.length > 0; else noFlights">
   <table>
@@ -9,7 +11,6 @@
         <th>Arrival City</th>
         <th>Departure Date</th>
         <th>Arrival Date</th>
-        <th>Price</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -18,10 +19,12 @@
         <td>{{ flight.flightNumber }}</td>
         <td>{{ flight.departureCity }}</td>
         <td>{{ flight.arrivalCity }}</td>
-        <td>{{ flight.departureDate  }}</td>
-        <td>{{ flight.arrivalDate  }}</td>
-        <td>{{ flight.price }}</td>
-        
+        <td>{{ flight.departureDate }}</td>
+        <td>{{ flight.arrivalDate }}</td>
+        <td>
+          <button (click)="deleteFlight(flight.id)">Delete</button>
+          <button [routerLink]="['/update', flight.id]">Update</button>
+        </td>
       </tr>
     </tbody>
   </table>

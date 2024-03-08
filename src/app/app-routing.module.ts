@@ -12,20 +12,22 @@ import { CreateCompanyComponent } from './components/company/create-company/crea
 import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
 import { ListCompanyComponent } from './components/company/list-company/list-company.component';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent }, // Assuming you want the dashboard as the default route
   { path: 'dashbord', component: DashbordComponent }, // Assuming you want the dashboard as the default route
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'flights', component: ListFlightComponent },
   { path: 'flights/create', component: CreateFlightComponent },
-  { path: 'flights/:id/edit', component: UpdateFlightComponent }, // Using a parameter for flight ID
+  { path: 'update/:id', component: UpdateFlightComponent }, // Using a parameter for flight ID
   { path: 'tickets/create', component: CreateTicketComponent },
   { path: 'tickets', component: ListTicketComponent },
   { path: 'tickets/:id/edit', component: UpdateTicketComponent }, // Using a parameter for ticket ID
   { path: 'companies', component: ListCompanyComponent },
   { path: 'companies/create', component: CreateCompanyComponent },
-  { path: 'companies/:id/edit', component: UpdateCompanyComponent }, // Using a parameter for company ID
+  { path: 'update-compa/:id', component: UpdateCompanyComponent }, // Using a parameter for company ID
 ];
 
 @NgModule({

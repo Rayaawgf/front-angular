@@ -17,7 +17,6 @@ export class FlightService {
 
   getAllFlights(): Observable<Flight[]> {
     return this.http.get<Flight[]>(this.baseUrl);
-    console.log(this.http.get<Flight[]>(this.baseUrl));
   }
 
   getFlightById(id: number): Observable<Flight> {

@@ -1,0 +1,41 @@
+<h2>Recherche de billets</h2>
+
+<form [formGroup]="searchForm" (ngSubmit)="searchTickets()">
+  <div class="form-group">
+    <label for="departureCity">Ville de départ:</label>
+    <input type="text" formControlName="departureCity" id="departureCity" required>
+  </div>
+  <div class="form-group">
+    <label for="arrivalCity">Ville d'arrivée:</label>
+    <input type="text" formControlName="arrivalCity" id="arrivalCity" required>
+  </div>
+  <div class="form-group">
+    <label for="departureDate">Date de départ:</label>
+    <input type="date" formControlName="departureDate" id="departureDate" required>
+  </div>
+  <div class="form-group">
+    <label for="ticketClass">Classe de billet:</label>
+    <select formControlName="ticketClass" id="ticketClass" required>
+      <option value="ECONOMY">Classe économique</option>
+      <option value="BUSINESS">Classe affaires</option>
+      <option value="FIRST_CLASS">Première classe</option>
+    </select>
+  </div>
+  <button type="submit">Rechercher</button>
+</form>
+
+<div *ngIf="cheapestTickets">
+  <h3>Billets les moins chers:</h3>
+  <ul>
+    <li *ngFor="let ticket of cheapestTickets">
+      <div>
+        <p><strong>Numéro de ticket:</strong> {{ ticket.ticketNumber }}</p>
+        <p><strong>Prix:</strong> {{ ticket.price }}</p>
+        <p><strong>Classe de ticket:</strong> {{ ticket.ticketClass }}</p>
+        <p><strong>Nombre de tickets disponibles:</strong> {{ ticket.numberOfTicketsAvailable }}</p>
+        <p><strong>ID du vol:</strong> {{ ticket.flightId }}</p>
+        <!-- Ajoutez d'autres détails du ticket ici selon vos besoins -->
+      </div>
+    </li>
+  </ul>
+</div>
