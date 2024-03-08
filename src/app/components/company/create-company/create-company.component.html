@@ -1,14 +1,18 @@
-<div>
-  <form [formGroup]="companyForm" (submit)="createCompany()">
-    <div>
-      <label for="name">Nom:</label>
-      <input type="text" id="name" formControlName="name" required>
+<div class="flex justify-center items-center h-screen bg-white md:bg-customGreen">
+  <div class="md:flex justify-center items-center bg-green-100 md:bg-opacity-50 w-full md:w-auto md:max-w-md hidden">
+    <img src="assets/undraw_best_place.svg" alt="traveling" class="md:block hidden" />
+  </div>
+  <form [formGroup]="companyForm" (submit)="createCompany()" class="bg-white rounded-lg p-10 max-w-md w-full md:ml-8 md:mr-8 mt-8 md:mt-0">
+    <h2 class="text-3xl font-semibold mb-6 text-green-700">Créer une compagnie</h2>
+    <div class="mb-6">
+      <label for="name" class="block text-gray-700 mb-2">Nom</label>
+      <input type="text" id="name" formControlName="name" required class="form-input rounded-lg border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 px-4 py-3 text-lg w-full">
     </div>
-    <div>
-      <label for="code">Code:</label>
-      <input type="text" id="code" formControlName="code" required>
+    <div class="mb-6">
+      <label for="code" class="block text-gray-700 mb-2">Code</label>
+      <input type="text" id="code" formControlName="code" required class="form-input rounded-lg border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 px-4 py-3 text-lg w-full">
     </div>
-    <button type="submit">Créer une compagnie</button>
+    <button type="submit" class="bg-green-700 text-white px-6 py-4 rounded-lg hover:bg-green-600 text-xl w-full">Créer</button>
   </form>
-  <p *ngIf="error" class="error">{{ error }}</p>
+  <p *ngIf="error" class="text-red-500 mt-4">{{ error }}</p>
 </div>
