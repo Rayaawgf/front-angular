@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { DetailsTicketComponent } from './components/ticket/details-ticket/details-ticket.component';
 
 
 
@@ -43,6 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     DashbordComponent,
     NavbarComponent,
     HomeComponent,
+    DetailsTicketComponent,
    
    
   ],

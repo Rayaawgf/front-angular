@@ -34,6 +34,7 @@
         <p><strong>Classe de ticket:</strong> {{ ticket.ticketClass }}</p>
         <p><strong>Nombre de tickets disponibles:</strong> {{ ticket.numberOfTicketsAvailable }}</p>
         <p><strong>ID du vol:</strong> {{ ticket.flightId }}</p>
+        <button [routerLink]="['/details-ticket', ticket.id]">Détails</button> <!-- Bouton Détails -->
         <!-- Ajoutez d'autres détails du ticket ici selon vos besoins -->
       </div>
     </li>
