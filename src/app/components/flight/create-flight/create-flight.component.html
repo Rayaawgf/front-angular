@@ -1,23 +1,24 @@
-<h2>Create New Flight</h2>
-
-<form (submit)="createFlight()">
-  <label for="flightNumber">Flight Number:</label>
-  <input type="text" id="flightNumber" name="flightNumber" [(ngModel)]="newFlight.flightNumber" required>
-
-  <label for="departureCity">Departure City:</label>
-  <input type="text" id="departureCity" name="departureCity" [(ngModel)]="newFlight.departureCity" required>
-
-  <label for="arrivalCity">Arrival City:</label>
-  <input type="text" id="arrivalCity" name="arrivalCity" [(ngModel)]="newFlight.arrivalCity" required>
-
-  <label for="departureDate">Departure Date:</label>
-  <input type="datetime-local" id="departureDate" name="departureDate" [(ngModel)]="newFlight.departureDate" required>
-
-  <label for="arrivalDate">Arrival Date:</label>
-  <input type="datetime-local" id="arrivalDate" name="arrivalDate" [(ngModel)]="newFlight.arrivalDate" required>
-
-  <label for="price">Price:</label>
-  <input type="number" id="price" name="price" [ngModel]="newFlight.price" (input)="newFlight.price = +$event.target.value" required>
-
-  <button type="submit">Create Flight</button>
-</form>
+<form [formGroup]="flightForm" (ngSubmit)="createFlight()">
+    <label for="flightNumber">Flight Number:</label>
+    <input type="text" id="flightNumber" formControlName="flightNumber">
+    
+    <label for="departureCity">Departure City:</label>
+    <input type="text" id="departureCity" formControlName="departureCity">
+    
+    <label for="arrivalCity">Arrival City:</label>
+    <input type="text" id="arrivalCity" formControlName="arrivalCity">
+    
+    <label for="departureDate">Departure Date:</label>
+    <input type="date" id="departureDate" formControlName="departureDate">
+    
+    <label for="arrivalDate">Arrival Date:</label>
+    <input type="date" id="arrivalDate" formControlName="arrivalDate">
+    
+    <label for="companyId">Company:</label>
+    <select formControlName="companyAerienneId" class="form-control">
+      <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
+    </select>
+    
+    <button type="submit">Create Flight</button>
+  </form>
+  

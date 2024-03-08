@@ -8,13 +8,12 @@ import { Flight } from '../models/flight';
 })
 export class FlightService {
 
-  readonly baseUrl = 'http://localhost:8080/api/flights';
+  readonly baseUrl = 'http://localhost:8081/api/flights';
 
   constructor(private http: HttpClient) { }
 
   getAllFlights(): Observable<Flight[]> {
     return this.http.get<Flight[]>(this.baseUrl);
-    console.log(this.http.get<Flight[]>(this.baseUrl));
   }
 
   getFlightById(id: number): Observable<Flight> {

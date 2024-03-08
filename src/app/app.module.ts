@@ -14,10 +14,10 @@ import { UpdateTicketComponent } from './components/ticket/update-ticket/update-
 import { CreateCompanyComponent } from './components/company/create-company/create-company.component';
 import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
 import { ListCompanyComponent } from './components/company/list-company/list-company.component';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { HomeComponent } from './components/home/home.component';
+import { SearchComponent } from './components/search/search.component'; // Import ReactiveFormsModule
 
 
 @NgModule({
@@ -34,14 +34,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateCompanyComponent,
     UpdateCompanyComponent,
     ListCompanyComponent,
-   
+    HomeComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule ,
+    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, // Ajout de ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
