@@ -1,24 +1,25 @@
-<h2>List of Companies</h2>
+<div *ngIf="error" class="error">{{ error }}</div>
 
-<div *ngIf="companies && companies.length > 0; else noCompanies">
-  <table>
-    <thead>
-      <tr>
-        <th>Company Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let company of companies">
-        <td>{{ company.nom }}</td>
-        <td>
-          <button (click)="deleteCompany(company.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table *ngIf="companies.length > 0" class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Code</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let company of companies">
+      <td>{{ company.id }}</td>
+      <td>{{ company.name }}</td>
+      <td>{{ company.code }}</td>
+      <td>
+        <button (click)="deleteCompany(company.id)">Supprimer</button>
+        <button [routerLink]="['/update-company', company.id]">Mettre à jour</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<ng-template #noCompanies>
-  <p>No companies available.</p>
-</ng-template>
+<div *ngIf="companies.length === 0 && !error" class="message">Aucune entreprise à afficher.</div>
