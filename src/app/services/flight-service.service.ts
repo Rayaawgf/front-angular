@@ -11,7 +11,7 @@ export class FlightService {
     throw new Error('Method not implemented.');
   }
 
-  readonly baseUrl = 'http://localhost:8081/api/flights';
+  readonly baseUrl = 'http://localhost:8080/api/flights';
 
   constructor(private http: HttpClient) { }
 

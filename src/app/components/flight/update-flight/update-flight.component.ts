@@ -62,7 +62,7 @@ export class UpdateFlightComponent implements OnInit {
     this.flightService.updateFlight(this.flightId, updatedFlight).subscribe(
       () => {
         console.log('Flight updated successfully');
-        this.router.navigate(['/list-flight']); // Rediriger vers la liste des vols après la mise à jour
+        this.router.navigate(['/flights']); // Rediriger vers la liste des vols après la mise à jour
       },
       error => {
         this.error = 'Error updating flight';

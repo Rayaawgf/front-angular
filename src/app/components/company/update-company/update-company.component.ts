@@ -53,7 +53,7 @@ export class UpdateCompanyComponent implements OnInit {
     this.companyService.updateCompany(this.companyId, updatedCompany).subscribe(
       () => {
         // Company mise à jour avec succès, effectuez des actions supplémentaires si nécessaire
-        this.router.navigate(['/list-company']); // Rediriger vers la liste des compagnies
+        this.router.navigate(['/companies']); // Rediriger vers la liste des compagnies
       },
       error => {
         // Gérer les erreurs lors de la mise à jour de la compagnie

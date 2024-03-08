@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompanyAerienne } from '../../../models/company-aerienne';
 import { CompanyAerienneService } from '../../../services/company-aerienne-service.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-create-company',
   templateUrl: './create-company.component.html',
@@ -12,7 +12,7 @@ export class CreateCompanyComponent {
   companyForm: FormGroup;
   error: string | undefined;
 
-  constructor(private formBuilder: FormBuilder, private companyService: CompanyAerienneService) {
+  constructor(private formBuilder: FormBuilder, private companyService: CompanyAerienneService, private router: Router) {
     this.companyForm = this.formBuilder.group({
       name: ['', Validators.required],
       code: ['', Validators.required],
@@ -25,6 +25,7 @@ export class CreateCompanyComponent {
 
     this.companyService.addCompany(newCompany).subscribe(
       () => {
+        this.router.navigate(['/companies']);
         // Company créée avec succès, effectuez des actions supplémentaires si nécessaire
       },
       error => {

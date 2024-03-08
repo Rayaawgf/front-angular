@@ -17,6 +17,8 @@ import { ListCompanyComponent } from './components/company/list-company/list-com
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -38,6 +40,8 @@ import { DashbordComponent } from './components/dashbord/dashbord.component';
     UpdateCompanyComponent,
     ListCompanyComponent,
     DashbordComponent,
+    NavbarComponent,
+    HomeComponent
    
   ],
   imports: [

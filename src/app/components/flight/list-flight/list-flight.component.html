@@ -1,4 +1,6 @@
+<button routerLink="/flights/create">Créer un vol</button>
 <h2>List of Flights</h2>
+
 
 <div *ngIf="flights && flights.length > 0; else noFlights">
   <table>
@@ -21,7 +23,7 @@
         <td>{{ flight.arrivalDate }}</td>
         <td>
           <button (click)="deleteFlight(flight.id)">Delete</button>
-          <button [routerLink]="['/update-flight', flight.id]">Update</button>
+          <button [routerLink]="['/update', flight.id]">Update</button>
         </td>
       </tr>
     </tbody>

@@ -1,4 +1,4 @@
-<div *ngIf="error" class="error">{{ error }}</div>
+<button routerLink="/companies/create">Créer une entreprise</button>
 
 <table *ngIf="companies.length > 0" class="table">
   <thead>
@@ -16,7 +16,7 @@
       <td>{{ company.code }}</td>
       <td>
         <button (click)="deleteCompany(company.id)">Supprimer</button>
-        <button [routerLink]="['/update-company', company.id]">Mettre à jour</button>
+        <button [routerLink]="['/update-compa', company.id]">Mettre à jour</button>
       </td>
     </tr>
   </tbody>
