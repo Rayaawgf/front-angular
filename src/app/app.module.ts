@@ -18,7 +18,6 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    FormsModule,
     AppComponent,
     RegistrationComponent,
     LoginComponent,
