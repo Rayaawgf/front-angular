@@ -1,16 +1,32 @@
-<!-- detail-ticket.component.html -->
-
-<div *ngIf="ticketDetails">
-    <h2>Details du Ticket</h2>
-    <p>ID: {{ ticketDetails.id }}</p>
-    <p>Numero de Ticket: {{ ticketDetails.ticketNumber }}</p>
-    <p>Prix: {{ ticketDetails.price }}</p>
-    <p>Classe: {{ ticketDetails.ticketClass }}</p>
-    <h3>Details du Vol</h3>
-    <p>Numero de Vol: {{ ticketDetails.flightInfo.flightNumber }}</p>
-    <p>Ville de Depart: {{ ticketDetails.flightInfo.departureCity }}</p>
-    <p>Ville d'Arrivee: {{ ticketDetails.flightInfo.arrivalCity }}</p>
-    <!-- Ajoutez d'autres détails du vol selon vos besoins -->
-
-    <button (click)="reserveTicket()">Reserve</button>
-</div>
+<div *ngIf="ticketDetails" class="flex flex-col items-center justify-center min-h-screen bg-white md:bg-customGreen p-4 md:p-8">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl w-full">
+      <h2 class="text-2xl font-semibold mb-4 text-green-700">Détails du Ticket</h2>
+      <div class="mb-2">
+        <span class="font-bold">ID:</span> {{ ticketDetails.id }}
+      </div>
+      <div class="mb-2">
+        <span class="font-bold">Numéro de Ticket:</span> {{ ticketDetails.ticketNumber }}
+      </div>
+      <div class="mb-2">
+        <span class="font-bold">Prix:</span> {{ ticketDetails.price }}
+      </div>
+      <div class="mb-2">
+        <span class="font-bold">Classe:</span> {{ ticketDetails.ticketClass }}
+      </div>
+  
+      <h3 class="text-xl font-semibold mt-6 mb-4 text-green-700">Détails du Vol</h3>
+      <div class="mb-2">
+        <span class="font-bold">Numéro de Vol:</span> {{ ticketDetails.flightInfo.flightNumber }}
+      </div>
+      <div class="mb-2">
+        <span class="font-bold">Ville de Départ:</span> {{ ticketDetails.flightInfo.departureCity }}
+      </div>
+      <div class="mb-2">
+        <span class="font-bold">Ville d'Arrivée:</span> {{ ticketDetails.flightInfo.arrivalCity }}
+      </div>
+      <!-- Ajoutez d'autres détails du vol selon vos besoins -->
+  
+      <button (click)="reserveTicket()" class="mt-4 bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-150 ease-in-out">Réserver</button>
+    </div>
+  </div>
+  

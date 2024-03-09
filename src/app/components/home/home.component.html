@@ -32,19 +32,19 @@
 </div>
 
 <!-- Cheapest Tickets Section Styled Consistently -->
-<div class="md:w-1/2 mx-auto mt-8" *ngIf="cheapestTickets && cheapestTickets.length > 0">
-  <h3 class="text-3xl font-semibold mb-4">Billets les moins chers</h3>
-  <ul>
-    <li *ngFor="let ticket of cheapestTickets" class="mb-4">
-      <div class="border border-gray-200 rounded-lg p-4">
+<div *ngIf="cheapestTickets && cheapestTickets.length > 0" class="min-h-screen bg-white flex flex-col justify-center">
+  <div class="w-full max-w-6xl mx-auto px-4">
+    <h3 class="text-md md:text-3xl font-semibold text-center text-green-700 mb-32">Billets les moins chers</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a *ngFor="let ticket of cheapestTickets" [routerLink]="['/details-ticket', ticket.id]"
+         class="transform transition duration-500 hover:scale-110 cursor-pointer bg-customGreen hover:bg-white border border-gray-200 rounded-lg p-6 text-black hover:text-green-700 shadow-md hover:shadow-lg">
         <p><strong>Numéro de ticket:</strong> {{ ticket.ticketNumber }}</p>
         <p><strong>Prix:</strong> {{ ticket.price }}</p>
         <p><strong>Classe de ticket:</strong> {{ ticket.ticketClass }}</p>
         <p><strong>Nombre de tickets disponibles:</strong> {{ ticket.numberOfTicketsAvailable }}</p>
         <p><strong>ID du vol:</strong> {{ ticket.flightId }}</p>
-        <!-- Additional ticket details can be added here as needed -->
-        <button [routerLink]="['/details-ticket', ticket.id]">Détails</button>
-      </div>
-    </li>
-  </ul>
+        <!-- Additional ticket details -->
+      </a>
+    </div>
+  </div>
 </div>
