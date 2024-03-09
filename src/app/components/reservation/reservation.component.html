@@ -1,10 +1,34 @@
-<div>
-<h2>Reservations</h2>
-<ul>
-  <li *ngFor="let reservation of reservations">
-    <span>User ID: {{ reservation.userId }}</span>
-    <span>Ticket ID: {{ reservation.ticketId }}</span>
-    <span>Reservation Date: {{ reservation.reservationDate }}</span>
-  </li>
-</ul>
+
+<div class="flex flex-wrap justify-center items-center min-h-screen bg-white md:bg-customGreen gap-6">
+  <div class="md:flex md:justify-center md:items-center bg-green-100 md:bg-opacity-50 w-full md:w-auto md:max-w-md hidden lg:block">
+    <img src="assets/undraw_best_place.svg" alt="traveling" />
+  </div>
+  <div class="bg-white rounded-lg p-4 md:p-8 max-w-full md:max-w-xl lg:max-w-3xl w-full mt-8 md:mt-0">
+    <div class="w-full flex justify-between items-center mb-4">
+      <h2 class="text-2xl md:text-3xl font-semibold text-center text-green-700">Liste des reservation</h2>
+    </div>
+    <div class="w-full overflow-auto">
+      <table class="w-full text-left rounded-lg overflow-hidden">
+        <thead class="bg-green-100 text-gray-700">
+          <tr>
+            <th class="px-4 py-2">ID Ticket</th>
+            <th class="px-4 py-2">ID User</th>
+            <th class="px-4 py-2">Date </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <tr *ngFor="let reservation of reservations" class="border-b">
+            <td class="px-4 py-2">{{ reservation.userId }}</td>
+            <td class="px-4 py-2">{{ reservation.ticketId }}</td>
+            <td class="px-4 py-2">{{ reservation.reservationDate | date: 'mediumDate' }}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noCompanies>
+      <p class="text-lg text-gray-700 text-center">Aucune entreprise à afficher.</p>
+    </ng-template>
+  </div>
 </div>
+
