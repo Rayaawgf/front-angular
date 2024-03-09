@@ -35,6 +35,7 @@
             <button (click)="deleteTicket(ticket.id)" class="bg-white text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">
               <fa-icon [icon]="['fas', 'trash-alt']" class="text-red-500 hover:text-white"></fa-icon>
             </button>
+            <button [routerLink]="['/details-ticket', ticket.id]">Détails</button>
           </td>
         </tr>
       </tbody>

@@ -43,6 +43,7 @@
         <p><strong>Nombre de tickets disponibles:</strong> {{ ticket.numberOfTicketsAvailable }}</p>
         <p><strong>ID du vol:</strong> {{ ticket.flightId }}</p>
         <!-- Additional ticket details can be added here as needed -->
+        <button [routerLink]="['/details-ticket', ticket.id]">Détails</button>
       </div>
     </li>
   </ul>

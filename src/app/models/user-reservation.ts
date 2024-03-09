@@ -12,8 +12,6 @@ export class UserReservation {
         this.userId = userId;
         this.ticketId = ticketId;
         this.reservationDate = reservationDate;
-    }
-
-   
+    } 
     
 }
