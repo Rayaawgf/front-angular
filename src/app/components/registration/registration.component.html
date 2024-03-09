@@ -17,6 +17,9 @@
       <input type="password" formControlName="password" id="password" class="form-input rounded-lg border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 px-4 py-3 text-lg w-full">
     </div>
     <button type="submit" class="bg-green-700 text-white px-6 py-4 rounded-lg hover:bg-green-600 text-xl w-full">Register</button>
+    <p class="mt-4 text-center">
+      Already have an account? <a routerLink="/login" class="text-green-700 hover:text-green-500">Login</a>
+    </p>
   </form>
 
   <p *ngIf="error" class="text-red-500 mt-4">{{ error }}</p>
