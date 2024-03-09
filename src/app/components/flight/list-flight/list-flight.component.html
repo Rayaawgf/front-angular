@@ -3,7 +3,7 @@
     <div class="flex-grow">
       <h2 class="md:text-3xl text-2xl font-semibold text-center text-green-700">List of Flights</h2>
     </div>
-    <button routerLink="/flights/create" class="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-600 md:bg-white md:text-green-700 hover:text-white md:hover:bg-green-700">Créer un vol</button>
+    <button routerLink="/flights/create" class="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-600 md:bg-white md:text-green-700 hover:text-white md:hover:bg-green-700 md:border md:border-green-700">Créer un vol</button>
   </div>
 
   <div *ngIf="flights && flights.length > 0; else noFlights" class="w-full overflow-auto">
