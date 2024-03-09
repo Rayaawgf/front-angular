@@ -1,3 +1,4 @@
+<!-- Navigation Bar -->
 <nav class="fixed top-0 left-0 w-full flex items-center justify-between z-10 bg-white p-3">
   <a class="text-green-700 hover:text-green-600 px-4 py-2 text-2xl font-bold uppercase md:text-3xl" href="#">Rim Best Price</a>
   <div class="lg:hidden">
@@ -8,59 +9,59 @@
     </button>
   </div>
   <div class="hidden lg:flex lg:items-center" id="navbarNav">
-    <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-      <!-- Conditionally display links based on authentication status -->
+    <ul class="flex flex-row list-none gap-4">
+      <!-- Dynamically display links -->
       <ng-container *ngIf="isLoggedIn; else notLoggedInLinks">
-        <!-- Links to display when logged in -->
-        <li class="nav-item">
-          <a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="" (click)="closeModal()">Home</a>
-        </li>
-        <!-- Add other authenticated links here -->
+        <ng-container *ngIf="isAdmin; else userLinks">
+          <!-- Admin Links -->
+          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/companies">Companies</a></li>
+          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/flights">Flights</a></li>
+          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/tickets">Tickets</a></li>
+          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/reservations">Reservations</a></li>
+          <li class="nav-item"><button class="text-gray-900 hover:text-gray-800 px-4 py-2 focus:outline-none" (click)="logout(); closeModal()">Logout</button></li>
+        </ng-container>
+        <ng-template #userLinks>
+          <!-- Authenticated Non-Admin User Links -->
+          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/">Home</a></li>
+          <li class="nav-item"><button class="text-gray-900 hover:text-gray-800 px-4 py-2 focus:outline-none" (click)="logout(); closeModal()">Logout</button></li>
+        </ng-template>
       </ng-container>
       <ng-template #notLoggedInLinks>
-        <!-- Links to display when not logged in -->
-        <li class="nav-item">
-          <a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/login" (click)="closeModal()">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/registration" (click)="closeModal()">Register</a>
-        </li>
-        <!-- Add other links for non-authenticated users here -->
+        <!-- Non-Authenticated User Links -->
+        <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/">Home</a></li>
+        <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/login">Login</a></li>
+        <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/registration">Register</a></li>
       </ng-template>
-    </ul>
-    <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-      <li class="nav-item">
-        <button class="text-gray-900 hover:text-gray-800 px-4 py-2 focus:outline-none" (click)="logout(); closeModal()" *ngIf="isLoggedIn">Logout</button>
-      </li>
     </ul>
   </div>
 </nav>
 
-<!-- Modal -->
+<!-- Modal for Mobile View -->
 <div class="fixed top-0 right-0 flex flex-col items-end justify-start w-full mt-16" [ngClass]="{'hidden': !isModalOpen, 'block': isModalOpen}">
   <div class="bg-white rounded-lg p-6 mr-2 shadow-lg">
     <ul class="text-gray-900">
-      <!-- Conditionally display links based on authentication status -->
+      <!-- Dynamically display links in the modal -->
       <ng-container *ngIf="isLoggedIn; else notLoggedInLinksModal">
-        <!-- Links to display when logged in -->
-        <li class="mb-4">
-          <a class="block py-2 px-4 hover:text-green-600" routerLink="" (click)="closeModal()">Home</a>
-        </li>
-        <!-- Add other authenticated links here -->
+        <ng-container *ngIf="isAdmin; else userLinksModal">
+          <!-- Admin Links in Modal -->
+          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/companies" (click)="closeModal()">Companies</a></li>
+          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/flights" (click)="closeModal()">Flights</a></li>
+          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/tickets" (click)="closeModal()">Tickets</a></li>
+          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/reservations" (click)="closeModal()">Reservations</a></li>
+        </ng-container>
+        <ng-template #userLinksModal>
+          <!-- Authenticated Non-Admin User Links in Modal -->
+          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/" (click)="closeModal()">Home</a></li>
+        </ng-template>
+        <!-- Logout for authenticated users in Modal -->
+        <li class="mb-4"><button class="block py-2 px-4 hover:text-gray-800 focus:outline-none" (click)="logout(); closeModal()">Logout</button></li>
       </ng-container>
       <ng-template #notLoggedInLinksModal>
-        <!-- Links to display when not logged in -->
-        <li class="mb-4">
-          <a class="block py-2 px-4 hover:text-green-600" routerLink="/login" (click)="closeModal()">Login</a>
-        </li>
-        <li class="mb-4">
-          <a class="block py-2 px-4 hover:text-green-600" routerLink="/registration" (click)="closeModal()">Register</a>
-        </li>
-        <!-- Add other links for non-authenticated users here -->
+        <!-- Non-Authenticated User Links in Modal -->
+        <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/" (click)="closeModal()">Home</a></li>
+        <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/login" (click)="closeModal()">Login</a></li>
+        <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/registration" (click)="closeModal()">Register</a></li>
       </ng-template>
-      <li>
-        <button class="block py-2 px-4 hover:text-gray-800 focus:outline-none" (click)="logout(); closeModal()" *ngIf="isLoggedIn">Logout</button>
-      </li>
     </ul>
   </div>
 </div>

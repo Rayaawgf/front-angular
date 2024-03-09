@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -14,24 +13,36 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.authService.isAuthenticated().subscribe(authenticated => {
       this.isLoggedIn = authenticated;
-      if (authenticated) {
-        // Only set isAdmin if user is authenticated
-        const isAdminStr = localStorage.getItem('admin');
-        this.isAdmin = isAdminStr === 'true';
-      }
+      // Now, also check for admin status here
+      this.updateAdminStatus();
+      this.cdRef.detectChanges(); // Ensure updates are reflected in the template
     });
+  }
+
+  updateAdminStatus() {
+    if (this.isLoggedIn) {
+      const isAdminStr = localStorage.getItem('admin');
+      this.isAdmin = isAdminStr === 'true';
+    } else {
+      this.isAdmin = false; // Ensure isAdmin is false if not logged in
+    }
   }
 
   logout() {
     this.authService.logout();
+    this.isLoggedIn = false; // Manually update the isLoggedIn state
+    this.isAdmin = false; // Reset admin status on logout
     this.router.navigate(['/login']);
+    // No need to manually trigger change detection here as navigation will cause component reload
   }
+  
 
   isMenuOpen: boolean = false;
 

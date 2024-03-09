@@ -23,21 +23,23 @@ export class LoginComponent {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
   
-    this.authService.login(username, password).subscribe(
-      () => {
-        // Connexion réussie, rediriger ou effectuer d'autres actions nécessaires
-        if (username === 'admin') {
-          // Rediriger vers le tableau de bord
+    this.authService.login(username, password).subscribe({
+      next: () => {
+        // Assuming the admin status is stored in local storage by your AuthService
+        const isAdmin = localStorage.getItem('admin') === 'true';
+        if (isAdmin) {
+          // Redirect to the dashboard if the user is an admin
           this.router.navigate(['/flights']);
         } else {
-          // Rediriger vers la page d'accueil
+          // Redirect to the home page for non-admin users
           this.router.navigate(['']);
         }
       },
-      error => {
-        // Gérer l'erreur de connexion
+      error: () => {
+        // Handle login error
         this.error = 'Invalid username or password';
       }
-    );
+    });
   }
+  
 }
