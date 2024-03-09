@@ -18,32 +18,51 @@ export class CreateTicketComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private ticketService: TicketService) {
     this.ticketForm = this.formBuilder.group({
+      flightId: ['', Validators.required],
       ticketNumber: ['', Validators.required],
       price: [0, Validators.required],
       ticketClass: [TicketClass.ECONOMY, Validators.required],
       numberOfTicketsAvailable: [0, Validators.required],
-      flightId: [Validators.required],
-      creationTime: [new Date(), Validators.required],
-      
+      creationTime: [new Date(), Validators.required],  
     });
   }
 
   ngOnInit(): void {
-    // Vous pouvez charger les vols ici depuis un service si nécessaire
+    this.loadFlights();
   }
 
-  createTicket(): void {
-    const ticket: Ticket = this.ticketForm.value;
-
-    this.ticketService.addTicket(ticket).subscribe(
-      () => {
-        console.log('Ticket créé avec succès.');
-        // Réinitialiser le formulaire ou effectuer d'autres actions nécessaires
+  loadFlights(): void {
+    this.ticketService.getAllFlights().subscribe(
+      (flights: Flight[]) => { // Spécifiez le type de données pour "flights" comme un tableau de Flight
+        this.flights = flights;
       },
       error => {
-        console.error('Erreur lors de la création du ticket :', error);
-        this.error = 'Erreur lors de la création du ticket';
+        console.error('Erreur lors du chargement des vols :', error);
+        // Gérer l'erreur
       }
     );
+  }
+  
+
+  createTicket(): void {
+    if (this.ticketForm.valid) {
+      const ticket: Ticket = this.ticketForm.value;
+
+      this.ticketService.addTicket(ticket).subscribe(
+        () => {
+          console.log('Ticket créé avec succès.');
+          this.ticketForm.reset();
+        },
+        error => {
+          console.error('Erreur lors de la création du ticket :', error);
+          this.error = 'Erreur lors de la création du ticket';
+        }
+      );
+    } else {
+      // Afficher des messages d'erreur si le formulaire est invalide
+      Object.keys(this.ticketForm.controls).forEach(controlName => {
+        this.ticketForm.get(controlName)?.markAsTouched();
+      });
+    }
   }
 }

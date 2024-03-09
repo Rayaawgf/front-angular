@@ -14,11 +14,9 @@ import { UpdateTicketComponent } from './components/ticket/update-ticket/update-
 import { CreateCompanyComponent } from './components/company/create-company/create-company.component';
 import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
 import { ListCompanyComponent } from './components/company/list-company/list-company.component';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { ReactiveFormsModule } from '@angular/forms';
-
-
-
+import { HomeComponent } from './components/home/home.component';
+import { FormsModule } from '@angular/forms'; // Importez FormsModule
+import { ReactiveFormsModule } from '@angular/forms'; // Importez ReactiveFormsModule pour FormGroup
 
 @NgModule({
   declarations: [
@@ -34,14 +32,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateCompanyComponent,
     UpdateCompanyComponent,
     ListCompanyComponent,
-   
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, // Ajoutez ReactiveFormsModule ici pour utiliser FormGroup
   ],
   providers: [],
   bootstrap: [AppComponent]

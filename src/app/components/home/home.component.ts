@@ -29,7 +29,7 @@ export class HomeComponent {
       },
       error => {
         console.error('Error fetching cheapest tickets:', error);
-        // Handle error
+        // Gérer l'erreur
       }
     );
   }

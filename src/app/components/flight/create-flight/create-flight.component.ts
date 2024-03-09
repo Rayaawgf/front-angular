@@ -1,29 +1,75 @@
-import { Component } from '@angular/core';
-import { FlightService } from '../../../services/flight-service.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Flight } from '../../../models/flight';
 import { CompanyAerienne } from '../../../models/company-aerienne';
+import { FlightService } from '../../../services/flight-service.service';
+import { CompanyAerienneService } from '../../../services/company-aerienne-service.service';
+
 @Component({
   selector: 'app-create-flight',
   templateUrl: './create-flight.component.html',
   styleUrls: ['./create-flight.component.css']
 })
-export class CreateFlightComponent {
+export class CreateFlightComponent implements OnInit {
+  flightForm: FormGroup;
+  companies: CompanyAerienne[] = [];
+  newFlight: Flight | undefined;
 
-  newFlight: Flight = new Flight('', '', '', new Date(), new Date(), 0, new CompanyAerienne(0,''));
+  constructor(
+    private formBuilder: FormBuilder,
+    private flightService: FlightService,
+    private companyService: CompanyAerienneService
+  ) {
+    this.flightForm = this.formBuilder.group({
+      flightNumber: ['', Validators.required],
+      departureCity: ['', Validators.required],
+      arrivalCity: ['', Validators.required],
+      departureDate: ['', Validators.required],
+      arrivalDate: ['', Validators.required],
+      companyAerienneId: ['', Validators.required]
+    });
+  }
 
-  constructor(private flightService: FlightService) { }
+  ngOnInit(): void {
+    this.loadCompanies();
+  }
+
+  loadCompanies(): void {
+    this.companyService.getAllCompanies().subscribe(
+      companies => {
+        this.companies = companies;
+      },
+      error => {
+        console.error('Error loading companies:', error);
+        // Gérer l'erreur
+      }
+    );
+  }
 
   createFlight(): void {
+    const { id, flightNumber, departureCity, arrivalCity, departureDate, arrivalDate, companyAerienneId } = this.flightForm.value;
+    
+    this.newFlight = new Flight(
+      id,
+      flightNumber,
+      departureCity,
+      arrivalCity,
+      departureDate,
+      arrivalDate,
+      companyAerienneId,
+      []
+    );
+
     this.flightService.addFlight(this.newFlight)
       .subscribe(
         response => {
           console.log('Flight created successfully:', response);
-          // Optionally, you can reset the newFlight object here
-          this.newFlight = new Flight('', '', '', new Date(), new Date(), 0, new CompanyAerienne(0,''));
+          // Optionnellement, vous pouvez réinitialiser le formulaire ici
+          this.flightForm.reset();
         },
         error => {
           console.error('Error creating flight:', error);
-          // Handle error
+          // Gérer l'erreur
         }
       );
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ticket } from '../models/ticket';
+import { Flight } from '../models/flight'; // Importez le modèle de vol
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Ticket } from '../models/ticket';
 export class TicketService {
 
   private apiUrl = 'http://localhost:8081/api/tickets';
+  private flightApiUrl = 'http://localhost:8081/api/flights'; // URL pour les vols
 
   constructor(private http: HttpClient) { }
 
@@ -37,5 +39,9 @@ export class TicketService {
       fromObject: searchCriteria
     });
     return this.http.get<Ticket[]>(`${this.apiUrl}/search`, { params });
+  }
+
+  getAllFlights(): Observable<Flight[]> { // Méthode pour récupérer tous les vols
+    return this.http.get<Flight[]>(this.flightApiUrl);
   }
 }
