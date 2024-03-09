@@ -4,18 +4,16 @@ import { Flight } from './flight'; // Assurez-vous d'importer correctement le mo
 
 export class UserReservation {
 
-    user: User;
-    ticket: Ticket;
-    reservationTime: Date;
+    userId: User;
+    ticketId: Ticket;
+    reservationDate: Date;
 
-    constructor(user: User, ticket: Ticket, reservationTime: Date) {
-        this.user = user;
-        this.ticket = ticket;
-        this.reservationTime = reservationTime;
+    constructor(userId: User, ticketId: Ticket, reservationDate: Date) {
+        this.userId = userId;
+        this.ticketId = ticketId;
+        this.reservationDate = reservationDate;
     }
 
    
-    toString(): string {
-        return `UserReservation{ user=${this.user.id}, ticket=${this.ticket.ticketNumber}, reservationTime=${this.reservationTime}}`;
-    }
+    
 }

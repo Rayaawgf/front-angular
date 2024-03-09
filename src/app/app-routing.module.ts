@@ -13,6 +13,8 @@ import { UpdateCompanyComponent } from './components/company/update-company/upda
 import { ListCompanyComponent } from './components/company/list-company/list-company.component';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { HomeComponent } from './components/home/home.component';
+import { DetailsTicketComponent } from './components/ticket/details-ticket/details-ticket.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // Assuming you want the dashboard as the default route
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'companies', component: ListCompanyComponent },
   { path: 'companies/create', component: CreateCompanyComponent },
   { path: 'update-compa/:id', component: UpdateCompanyComponent }, // Using a parameter for company ID
+  { path: 'details-ticket/:id', component: DetailsTicketComponent },
+  { path: 'reservations', component: ReservationComponent },  // Using a parameter for company ID
 ];
 
 @NgModule({

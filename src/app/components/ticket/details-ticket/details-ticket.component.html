@@ -1,0 +1,16 @@
+<!-- detail-ticket.component.html -->
+
+<div *ngIf="ticketDetails">
+    <h2>Details du Ticket</h2>
+    <p>ID: {{ ticketDetails.id }}</p>
+    <p>Numero de Ticket: {{ ticketDetails.ticketNumber }}</p>
+    <p>Prix: {{ ticketDetails.price }}</p>
+    <p>Classe: {{ ticketDetails.ticketClass }}</p>
+    <h3>Details du Vol</h3>
+    <p>Numero de Vol: {{ ticketDetails.flightInfo.flightNumber }}</p>
+    <p>Ville de Depart: {{ ticketDetails.flightInfo.departureCity }}</p>
+    <p>Ville d'Arrivee: {{ ticketDetails.flightInfo.arrivalCity }}</p>
+    <!-- Ajoutez d'autres détails du vol selon vos besoins -->
+
+    <button (click)="reserveTicket()">Reserve</button>
+</div>

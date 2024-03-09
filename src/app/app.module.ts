@@ -19,6 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { DetailsTicketComponent } from './components/ticket/details-ticket/details-ticket.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -43,6 +46,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DashbordComponent,
     NavbarComponent,
     HomeComponent,
+    DetailsTicketComponent,
+    ReservationComponent,
    
    
   ],

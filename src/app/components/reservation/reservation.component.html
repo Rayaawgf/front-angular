@@ -1,0 +1,10 @@
+<div>
+<h2>Reservations</h2>
+<ul>
+  <li *ngFor="let reservation of reservations">
+    <span>User ID: {{ reservation.userId }}</span>
+    <span>Ticket ID: {{ reservation.ticketId }}</span>
+    <span>Reservation Date: {{ reservation.reservationDate }}</span>
+  </li>
+</ul>
+</div>
