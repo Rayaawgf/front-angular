@@ -19,7 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -52,6 +52,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
