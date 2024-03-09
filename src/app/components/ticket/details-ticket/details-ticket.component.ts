@@ -42,23 +42,40 @@ export class DetailsTicketComponent implements OnInit {
 
 
   reserveTicket() {
-    this.reservationService.reserveTicket(this.newReservation).subscribe(
-      data => {
+    // Fetch user ID from local storage
+    const userIdFromStorage = localStorage.getItem('id');
+  
+    // Check if userId exists in local storage and is not null
+    if (!userIdFromStorage) {
+      console.error('User ID not found in local storage. Redirecting to login.');
+  
+      // Save the route the user attempted to access
+      localStorage.setItem('redirectAfterLogin', this.router.url);
+  
+      // Redirect to login page
+      this.router.navigate(['/login']);
+      return;
+    }
+  
+    // Prepare the reservation with the current ticketId, the userId from storage, and the current date/time
+    const reservation: UserReservation = {
+      userId: +userIdFromStorage, // Convert string to number
+      ticketId: this.ticketId,
+      reservationDate: new Date() // Sets to the current date/time
+    };
+  
+    // Make the reservation
+    this.reservationService.reserveTicket(reservation).subscribe({
+      next: (data) => {
         console.log('Reservation successful:', data);
-        // Réinitialiser la nouvelle réservation après la réussite
-        this.newReservation = {
-          userId: null!,
-          ticketId: null!,
-          reservationDate: null!
-        };
-        // Recharger la liste des réservations
+        // Navigate to the reservations list page
         this.router.navigate(['/reservations']);
-        
       },
-      error => {
+      error: (error) => {
         console.error('Error reserving ticket:', error);
+        // Handle the error, such as showing an error message to the user
       }
-    );
+    });
   }
 
 

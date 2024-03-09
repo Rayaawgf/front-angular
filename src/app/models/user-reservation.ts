@@ -4,11 +4,11 @@ import { Flight } from './flight'; // Assurez-vous d'importer correctement le mo
 
 export class UserReservation {
 
-    userId: User;
-    ticketId: Ticket;
+    userId: number;
+    ticketId: number;
     reservationDate: Date;
 
-    constructor(userId: User, ticketId: Ticket, reservationDate: Date) {
+    constructor(userId: number, ticketId: number, reservationDate: Date) {
         this.userId = userId;
         this.ticketId = ticketId;
         this.reservationDate = reservationDate;

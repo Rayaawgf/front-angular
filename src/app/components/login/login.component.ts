@@ -25,14 +25,22 @@ export class LoginComponent {
   
     this.authService.login(username, password).subscribe({
       next: () => {
-        // Assuming the admin status is stored in local storage by your AuthService
-        const isAdmin = localStorage.getItem('admin') === 'true';
-        if (isAdmin) {
-          // Redirect to the dashboard if the user is an admin
-          this.router.navigate(['/flights']);
+        // Check if there's a saved redirect path in local storage
+        const redirectPath = localStorage.getItem('redirectAfterLogin');
+        if (redirectPath) {
+          // Redirect to the saved path and remove it from local storage
+          this.router.navigateByUrl(redirectPath);
+          localStorage.removeItem('redirectAfterLogin');
         } else {
-          // Redirect to the home page for non-admin users
-          this.router.navigate(['']);
+          // Proceed with the usual admin or non-admin redirection
+          const isAdmin = localStorage.getItem('admin') === 'true';
+          if (isAdmin) {
+            // Redirect to the dashboard if the user is an admin
+            this.router.navigate(['/flights']);
+          } else {
+            // Redirect to the home page for non-admin users
+            this.router.navigate(['']);
+          }
         }
       },
       error: () => {
@@ -40,6 +48,6 @@ export class LoginComponent {
         this.error = 'Invalid username or password';
       }
     });
-  }
+  }  
   
 }
