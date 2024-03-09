@@ -1,25 +1,41 @@
-<button routerLink="/companies/create">Créer une entreprise</button>
-
-<table *ngIf="companies.length > 0" class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nom</th>
-      <th>Code</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let company of companies">
-      <td>{{ company.id }}</td>
-      <td>{{ company.name }}</td>
-      <td>{{ company.code }}</td>
-      <td>
-        <button (click)="deleteCompany(company.id)">Supprimer</button>
-        <button [routerLink]="['/update-compa', company.id]">Mettre à jour</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div *ngIf="companies.length === 0 && !error" class="message">Aucune entreprise à afficher.</div>
+<div class="flex flex-wrap justify-center items-center min-h-screen bg-white md:bg-customGreen gap-6">
+  <div class="md:flex md:justify-center md:items-center bg-green-100 md:bg-opacity-50 w-full md:w-auto md:max-w-md hidden lg:block">
+    <img src="assets/undraw_best_place.svg" alt="traveling" />
+  </div>
+  <div class="bg-white rounded-lg p-4 md:p-8 max-w-full md:max-w-xl lg:max-w-3xl w-full mt-8 md:mt-0">
+    <div class="w-full flex justify-between items-center mb-4">
+      <h2 class="text-2xl md:text-3xl font-semibold text-center text-green-700">Liste des Entreprises</h2>
+      <button routerLink="/companies/create" class="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-600 md:bg-white md:text-green-700 md:hover:text-white md:hover:bg-green-700 md:border md:border-green-700">Créer une entreprise</button>
+    </div>
+    <div *ngIf="companies && companies.length > 0; else noCompanies" class="w-full overflow-auto">
+      <table class="w-full text-left rounded-lg overflow-hidden">
+        <thead class="bg-green-100 text-gray-700">
+          <tr>
+            <th class="px-4 py-2">ID</th>
+            <th class="px-4 py-2">Nom</th>
+            <th class="px-4 py-2">Code</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <tr *ngFor="let company of companies" class="border-b">
+            <td class="px-4 py-2">{{ company.id }}</td>
+            <td class="px-4 py-2">{{ company.name }}</td>
+            <td class="px-4 py-2">{{ company.code }}</td>
+            <td class="px-4 py-2 flex justify-start space-x-2">
+              <button [routerLink]="['/update-compa', company.id]" class="bg-white text-green-700 border border-green-700 px-3 py-1 rounded hover:bg-green-700 hover:text-white">
+                <fa-icon [icon]="['fas', 'edit']" class="text-green-700 hover:text-white"></fa-icon>
+              </button>
+              <button (click)="deleteCompany(company.id)" class="bg-white text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">
+                <fa-icon [icon]="['fas', 'trash-alt']" class="text-red-500 hover:text-white"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noCompanies>
+      <p class="text-lg text-gray-700 text-center">Aucune entreprise à afficher.</p>
+    </ng-template>
+  </div>
+</div>

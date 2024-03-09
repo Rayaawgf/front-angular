@@ -1,17 +1,26 @@
-<div class="container">
-    <h2>Modifier une compagnie aérienne</h2>
-    <div *ngIf="error" class="error">{{ error }}</div>
-  
-    <form [formGroup]="companyForm" (ngSubmit)="updateCompany()">
-      <div class="form-group">
-        <label for="name">Nom de la compagnie:</label>
-        <input type="text" formControlName="name" class="form-control" id="name">
-      </div>
-      <div class="form-group">
-        <label for="code">Code de la compagnie:</label>
-        <input type="text" formControlName="code" class="form-control" id="code">
-      </div>
-      <button type="submit" class="btn btn-primary">Mettre à jour</button>
-    </form>
+<div class="flex justify-center items-center min-h-screen bg-white md:bg-customGreen">
+  <div class="md:flex justify-center items-center bg-green-100 md:bg-opacity-50 w-full md:w-auto md:max-w-md hidden lg:block">
+    <img src="assets/undraw_best_place.svg" alt="traveling" />
   </div>
-  
+  <div class="bg-white rounded-lg p-10 max-w-md w-full md:ml-8 md:mr-8 mt-8 md:mt-0">
+    <div class="flex justify-between items-center mb-6">
+      <button [routerLink]="'/companies'" class="text-green-700 hover:text-green-500 flex items-center">
+        <fa-icon [icon]="['fas', 'arrow-left']" size="lg"></fa-icon> <span class="ml-2"></span>
+      </button>
+      <h2 class="text-2xl md:text-3xl font-semibold text-green-700">Modifier une compagnie</h2>
+      <div> <!-- This empty div helps keep the title centered --></div>
+    </div>
+    <form [formGroup]="companyForm" (ngSubmit)="updateCompany()">
+      <div class="mb-6">
+        <label for="name" class="block text-gray-700 mb-2">Nom de la compagnie:</label>
+        <input type="text" id="name" formControlName="name" required class="form-input rounded-lg border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 px-4 py-3 w-full">
+      </div>
+      <div class="mb-6">
+        <label for="code" class="block text-gray-700 mb-2">Code de la compagnie:</label>
+        <input type="text" id="code" formControlName="code" required class="form-input rounded-lg border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 px-4 py-3 w-full">
+      </div>
+      <button type="submit" class="bg-green-700 text-white px-6 py-4 rounded-lg hover:bg-green-600 text-xl w-full">Mettre à jour</button>
+    </form>
+    <p *ngIf="error" class="text-red-500 mt-4">{{ error }}</p>
+  </div>
+</div>
