@@ -28,7 +28,7 @@ export class LoginComponent {
         // Connexion réussie, rediriger ou effectuer d'autres actions nécessaires
         if (username === 'admin') {
           // Rediriger vers le tableau de bord
-          this.router.navigate(['/dashbord']);
+          this.router.navigate(['/flights']);
         } else {
           // Rediriger vers la page d'accueil
           this.router.navigate(['']);
