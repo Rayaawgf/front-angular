@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationService } from '../../services/reservation.service';
 import { UserReservation } from '../../models/user-reservation';
-import { User } from '../../models/user';
-import { Ticket } from '../../models/ticket';
-import { Flight } from '../../models/flight';
 
 @Component({
   selector: 'app-reservation',
@@ -12,13 +9,47 @@ import { Flight } from '../../models/flight';
 })
 export class ReservationComponent implements OnInit {
 
-  userReservation!: UserReservation;
-  reservations!: UserReservation[];
+  reservations: UserReservation[] = []; // Ajout d'un initialisateur pour 'reservations'
+  newReservation: UserReservation = {
+    userId: null!,
+    ticketId: null!,
+    reservationDate: null!
+  };
 
   constructor(private reservationService: ReservationService) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.loadReservations();
   }
 
+  loadReservations() {
+    this.reservationService.getAllReservations().subscribe(
+      data => {
+        this.reservations = data;
+      },
+      error => {
+        console.log('Error fetching reservations:', error);
+      }
+    );
+  }
+
+  reserveTicket() {
+    this.reservationService.reserveTicket(this.newReservation).subscribe(
+      data => {
+        console.log('Reservation successful:', data);
+        // Réinitialiser la nouvelle réservation après la réussite
+        this.newReservation = {
+          userId: null!,
+          ticketId: null!,
+          reservationDate: null!
+        };
+        // Recharger la liste des réservations
+        this.loadReservations();
+      },
+      error => {
+        console.error('Error reserving ticket:', error);
+      }
+    );
+  }
 
 }
