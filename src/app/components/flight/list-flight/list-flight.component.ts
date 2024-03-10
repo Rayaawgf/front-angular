@@ -26,7 +26,6 @@ export class ListFlightComponent implements OnInit {
         },
         error => {
           console.error('Error loading flights:', error);
-          // Handle error
         }
       );
   }
@@ -40,7 +39,6 @@ export class ListFlightComponent implements OnInit {
         },
         error => {
           console.error('Error deleting flight:', error);
-          // Handle error
         }
       );
   }

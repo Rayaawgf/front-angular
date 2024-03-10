@@ -26,7 +26,6 @@ export class CreateCompanyComponent {
     this.companyService.addCompany(newCompany).subscribe(
       () => {
         this.router.navigate(['/companies']);
-        // Company créée avec succès, effectuez des actions supplémentaires si nécessaire
       },
       error => {
         // Gérer les erreurs lors de la création de la compagnie

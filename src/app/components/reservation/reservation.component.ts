@@ -9,7 +9,7 @@ import { UserReservation } from '../../models/user-reservation';
 })
 export class ReservationComponent implements OnInit {
 
-  reservations: UserReservation[] = []; // Ajout d'un initialisateur pour 'reservations'
+  reservations: UserReservation[] = [];
   newReservation: UserReservation = {
     userId: null!,
     ticketId: null!,

@@ -37,10 +37,9 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.isLoggedIn = false; // Manually update the isLoggedIn state
-    this.isAdmin = false; // Reset admin status on logout
+    this.isLoggedIn = false; 
+    this.isAdmin = false;
     this.router.navigate(['/login']);
-    // No need to manually trigger change detection here as navigation will cause component reload
   }
   
 

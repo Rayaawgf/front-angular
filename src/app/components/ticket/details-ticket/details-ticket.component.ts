@@ -73,7 +73,6 @@ export class DetailsTicketComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error reserving ticket:', error);
-        // Handle the error, such as showing an error message to the user
       }
     });
   }

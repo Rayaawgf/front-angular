@@ -29,7 +29,6 @@ export class HomeComponent {
       },
       error => {
         console.error('Error fetching cheapest tickets:', error);
-        // Gérer l'erreur
       }
     );
   }

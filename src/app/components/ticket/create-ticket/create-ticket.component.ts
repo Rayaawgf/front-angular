@@ -39,7 +39,6 @@ export class CreateTicketComponent implements OnInit {
       },
       error => {
         console.error('Erreur lors du chargement des vols :', error);
-        // Gérer l'erreur
       }
     );
   }

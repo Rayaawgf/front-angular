@@ -42,7 +42,6 @@ export class CreateFlightComponent implements OnInit {
       },
       error => {
         console.error('Error loading companies:', error);
-        // Gérer l'erreur
       }
     );
   }
@@ -69,7 +68,6 @@ export class CreateFlightComponent implements OnInit {
         },
         error => {
           console.error('Error creating flight:', error);
-          // Gérer l'erreur
         }
       );
   }

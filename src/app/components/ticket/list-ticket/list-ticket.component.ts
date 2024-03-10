@@ -25,7 +25,6 @@ export class ListTicketComponent implements OnInit {
         },
         error => {
           console.error('Error loading tickets:', error);
-          // Handle error
         }
       );
   }
@@ -39,7 +38,6 @@ export class ListTicketComponent implements OnInit {
         },
         error => {
           console.error('Error deleting ticket:', error);
-          // Handle error
         }
       );
   }
