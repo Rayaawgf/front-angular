@@ -15,23 +15,31 @@ import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { HomeComponent } from './components/home/home.component';
 import { DetailsTicketComponent } from './components/ticket/details-ticket/details-ticket.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, // Assuming you want the dashboard as the default route
-  { path: 'dashbord', component: DashbordComponent }, // Assuming you want the dashboard as the default route
+  // Public routes
+  { path: '', component: HomeComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'flights', component: ListFlightComponent },
-  { path: 'flights/create', component: CreateFlightComponent },
-  { path: 'update/:id', component: UpdateFlightComponent }, // Using a parameter for flight ID
-  { path: 'tickets/create', component: CreateTicketComponent },
-  { path: 'tickets', component: ListTicketComponent },
-  { path: 'update-tick/:id', component: UpdateTicketComponent }, // Using a parameter for ticket ID
-  { path: 'companies', component: ListCompanyComponent },
-  { path: 'companies/create', component: CreateCompanyComponent },
-  { path: 'update-compa/:id', component: UpdateCompanyComponent }, // Using a parameter for company ID
-  { path: 'details-ticket/:id', component: DetailsTicketComponent },
-  { path: 'reservations', component: ReservationComponent },  // Using a parameter for company ID
+  { path: 'details-ticket/:id', component: DetailsTicketComponent, canActivate: [AuthGuard] },
+
+  // Admin routes
+  { path: 'dashbord', component: DashbordComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'flights', component: ListFlightComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'flights/create', component: CreateFlightComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'update/:id', component: UpdateFlightComponent, canActivate: [AuthGuard, AdminGuard] }, 
+  { path: 'tickets/create', component: CreateTicketComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'tickets', component: ListTicketComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'update-tick/:id', component: UpdateTicketComponent, canActivate: [AuthGuard, AdminGuard] }, 
+  { path: 'companies', component: ListCompanyComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'companies/create', component: CreateCompanyComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'update-compa/:id', component: UpdateCompanyComponent, canActivate: [AuthGuard, AdminGuard] },
+
+  // Non-admin authenticated routes
+  { path: 'details-ticket/:id', component: DetailsTicketComponent, canActivate: [AuthGuard] },
+  { path: 'reservations', component: ReservationComponent },  
 ];
 
 @NgModule({
