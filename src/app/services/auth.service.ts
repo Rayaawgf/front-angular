@@ -31,8 +31,8 @@ export class AuthService {
 
 
   register(username: string, email: string, password: string): Observable<UserResponse> {
-    const user: UserResponse = { id: 0, username, admin: false }; // Assuming default values for registration
-    return this.http.post<UserResponse>(`${this.apiUrl}/register`, user)
+    const requestBody = { username, email, password };
+    return this.http.post<UserResponse>(`${this.apiUrl}/register`, requestBody)
       .pipe(
         catchError(this.handleError<UserResponse>('register'))
       );

@@ -26,19 +26,22 @@ export class RegistrationComponent {
   }
 
   register(): void {
-    
-    
     const username = this.registrationForm.value.username;
     const email = this.registrationForm.value.email;
     const password = this.registrationForm.value.password;
-
+  
     this.authService.register(username, email, password).subscribe(
       () => {
         this.router.navigate(['/login']);
       },
       error => {
-        this.error = error.message;
+        if (error.error && error.error.message) {
+          this.error = error.error.message;
+        } else {
+          this.error = 'An error occurred during registration. Please try again later.';
+        }
       }
     );
   }
+  
 }
