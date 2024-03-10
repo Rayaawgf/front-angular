@@ -7,12 +7,12 @@
       <button [routerLink]="'/companies'" class="text-green-700 hover:text-green-500 flex items-center">
         <fa-icon [icon]="['fas', 'arrow-left']" size="lg"></fa-icon> <span class="ml-2"></span>
       </button>
-      <h2 class="text-2xl font-semibold mb-6 text-green-700">Créer une compagnie</h2>
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-green-700">Créer une compagnie</h2>
       <div> <!-- This empty div helps keep the title centered -->
       </div>
     </div>
   <form [formGroup]="companyForm" (submit)="createCompany()" >
-    <div class="mb-6">
+      <div class="mb-6">
       <label for="name" class="block text-gray-700 mb-2">Nom</label>
       <input type="text" id="name" formControlName="name" required class="form-input rounded-lg border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 px-4 py-3 text-lg w-full">
     </div>
