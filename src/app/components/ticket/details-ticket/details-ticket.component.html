@@ -1,6 +1,14 @@
 <div *ngIf="ticketDetails" class="flex flex-col items-center justify-center min-h-screen bg-white md:bg-customGreen p-4 md:p-8">
     <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl w-full">
-      <h2 class="text-2xl font-semibold mb-4 text-green-700">Détails du Ticket</h2>
+      <div class="flex justify-between items-center mb-6">
+        <button [routerLink]="''" class="text-green-700 hover:text-green-500 flex items-center">
+            <fa-icon [icon]="['fas', 'arrow-left']" size="lg"></fa-icon>
+            
+        </button>
+        <h2 class="text-3xl font-semibold text-green-700">Détails du Ticket</h2>
+        <div> <!-- This empty div helps keep the title centered -->
+        </div>
+    </div>
       <div class="mb-2">
         <span class="font-bold">ID:</span> {{ ticketDetails.id }}
       </div>
