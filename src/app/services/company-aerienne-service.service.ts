@@ -8,7 +8,7 @@ import { CompanyAerienne } from '../models/company-aerienne';
 })
 export class CompanyAerienneService {
 
-  private baseUrl = 'http://localhost:8080/api/company-aeriennes'; // Assurez-vous que l'URL correspond à votre backend
+  private baseUrl = 'https://rimbestprice-spring.onrender.com/api/company-aeriennes'; // Assurez-vous que l'URL correspond à votre backend
 
   constructor(private http: HttpClient) { }
 

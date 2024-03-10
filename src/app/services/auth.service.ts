@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = 'https://rimbestprice-spring.onrender.com/auth';
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkInitialAuthState());
 
   constructor(private http: HttpClient, private router: Router) {}
