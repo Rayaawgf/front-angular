@@ -10,8 +10,10 @@ import { Flight } from '../models/flight';
 })
 export class TicketService {
 
-  private readonly apiUrl = 'https://rimbestprice-spring.onrender.com/api/tickets';
-  private readonly flightApiUrl = 'https://rimbestprice-spring.onrender.com/api/flights';
+  private readonly apiUrl = 'http://127.0.0.1:8080/api/tickets';
+  private readonly flightApiUrl = 'https://127.0.0.1:8080/api/flights';
+  // private readonly apiUrl = 'https://rimbestprice-spring.onrender.com/api/tickets';
+  // private readonly flightApiUrl = 'https://rimbestprice-spring.onrender.com/api/flights';
 
   constructor(private http: HttpClient) { }
 
