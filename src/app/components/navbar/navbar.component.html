@@ -1,10 +1,30 @@
 <!-- Navigation Bar -->
-<nav class="fixed top-0 left-0 w-full flex items-center justify-between z-10 bg-white p-3">
-  <a class="text-green-700 hover:text-green-600 px-4 py-2 text-2xl font-bold uppercase md:text-3xl" href="#">Rim Best Price</a>
+<nav
+  class="fixed top-0 left-0 w-full flex items-center justify-between z-10 bg-white p-3"
+>
+  <a
+    class="text-green-700 hover:text-green-600 px-4 py-2 text-2xl font-bold uppercase md:text-3xl"
+    href="#"
+    >Rim Best Price</a
+  >
   <div class="lg:hidden">
-    <button class="block px-4 py-2 text-gray-900 hover:text-gray-800 focus:outline-none focus:text-gray-800" (click)="toggleModal()" aria-label="Toggle navigation">
-      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    <button
+      class="block px-4 py-2 text-gray-900 hover:text-gray-800 focus:outline-none focus:text-gray-800"
+      (click)="toggleModal()"
+      aria-label="Toggle navigation"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        ></path>
       </svg>
     </button>
   </div>
@@ -14,53 +34,179 @@
       <ng-container *ngIf="isLoggedIn; else notLoggedInLinks">
         <ng-container *ngIf="isAdmin; else userLinks">
           <!-- Admin Links -->
-          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/companies">Companies</a></li>
-          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/flights">Flights</a></li>
-          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/tickets">Tickets</a></li>
-          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/reservations">Reservations</a></li>
-          <li class="nav-item"><button class="text-gray-900 hover:text-gray-800 px-4 py-2 focus:outline-none" (click)="logout(); closeModal()">Logout</button></li>
+          <li class="nav-item">
+            <a
+              class="text-gray-900 hover:text-green-600 px-4 py-2"
+              routerLink="/companies"
+              >Companies</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="text-gray-900 hover:text-green-600 px-4 py-2"
+              routerLink="/flights"
+              >Flights</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="text-gray-900 hover:text-green-600 px-4 py-2"
+              routerLink="/tickets"
+              >Tickets</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="text-gray-900 hover:text-green-600 px-4 py-2"
+              routerLink="/reservations"
+              >Reservations</a
+            >
+          </li>
+          <li class="nav-item">
+            <button
+              class="text-white hover:text-gray-800 px-4 py-2 focus:outline-none rounded-md bg-green-700 hover:bg-green-600"
+              (click)="logout(); closeModal()"
+            >
+              Logout
+            </button>
+          </li>
         </ng-container>
         <ng-template #userLinks>
           <!-- Authenticated Non-Admin User Links -->
-          <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/">Home</a></li>
-          <li class="nav-item"><button class="text-gray-900 hover:text-gray-800 px-4 py-2 focus:outline-none" (click)="logout(); closeModal()">Logout</button></li>
+          <li class="nav-item">
+            <a
+              class="text-gray-900 hover:text-green-600 px-4 py-2"
+              routerLink="/"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <button
+              class="text-gray-900 hover:text-gray-800 px-4 py-2 focus:outline-none"
+              (click)="logout(); closeModal()"
+            >
+              Logout
+            </button>
+          </li>
         </ng-template>
       </ng-container>
       <ng-template #notLoggedInLinks>
         <!-- Non-Authenticated User Links -->
-        <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/">Home</a></li>
-        <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/login">Login</a></li>
-        <li class="nav-item"><a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/registration">Register</a></li>
+        <li class="nav-item">
+          <a class="text-gray-900 hover:text-green-600 px-4 py-2" routerLink="/"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="text-gray-900 hover:text-green-600 px-4 py-2"
+            routerLink="/login"
+            >Login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="text-gray-900 hover:text-green-600 px-4 py-2"
+            routerLink="/registration"
+            >Register</a
+          >
+        </li>
       </ng-template>
     </ul>
   </div>
 </nav>
 
 <!-- Modal for Mobile View -->
-<div class="fixed top-0 right-0 flex flex-col items-end justify-start w-full mt-16" [ngClass]="{'hidden': !isModalOpen, 'block': isModalOpen}">
+<div
+  class="fixed top-0 right-0 flex flex-col items-end justify-start w-full mt-16"
+  [ngClass]="{ hidden: !isModalOpen, block: isModalOpen }"
+>
   <div class="bg-white rounded-lg p-6 mr-2 shadow-lg">
     <ul class="text-gray-900">
       <!-- Dynamically display links in the modal -->
       <ng-container *ngIf="isLoggedIn; else notLoggedInLinksModal">
         <ng-container *ngIf="isAdmin; else userLinksModal">
           <!-- Admin Links in Modal -->
-          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/companies" (click)="closeModal()">Companies</a></li>
-          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/flights" (click)="closeModal()">Flights</a></li>
-          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/tickets" (click)="closeModal()">Tickets</a></li>
-          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/reservations" (click)="closeModal()">Reservations</a></li>
+          <li class="mb-4">
+            <a
+              class="block py-2 px-4 hover:text-green-600"
+              routerLink="/companies"
+              (click)="closeModal()"
+              >Companies</a
+            >
+          </li>
+          <li class="mb-4">
+            <a
+              class="block py-2 px-4 hover:text-green-600"
+              routerLink="/flights"
+              (click)="closeModal()"
+              >Flights</a
+            >
+          </li>
+          <li class="mb-4">
+            <a
+              class="block py-2 px-4 hover:text-green-600"
+              routerLink="/tickets"
+              (click)="closeModal()"
+              >Tickets</a
+            >
+          </li>
+          <li class="mb-4">
+            <a
+              class="block py-2 px-4 hover:text-green-600"
+              routerLink="/reservations"
+              (click)="closeModal()"
+              >Reservations</a
+            >
+          </li>
         </ng-container>
         <ng-template #userLinksModal>
           <!-- Authenticated Non-Admin User Links in Modal -->
-          <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/" (click)="closeModal()">Home</a></li>
+          <li class="mb-4">
+            <a
+              class="block py-2 px-4 hover:text-green-600"
+              routerLink="/"
+              (click)="closeModal()"
+              >Home</a
+            >
+          </li>
         </ng-template>
         <!-- Logout for authenticated users in Modal -->
-        <li class="mb-4"><button class="block py-2 px-4 hover:text-gray-800 focus:outline-none" (click)="logout(); closeModal()">Logout</button></li>
+        <li class="mb-4">
+          <button
+            class="block py-2 px-4 hover:text-gray-800 focus:outline-none"
+            (click)="logout(); closeModal()"
+          >
+            Logout
+          </button>
+        </li>
       </ng-container>
       <ng-template #notLoggedInLinksModal>
         <!-- Non-Authenticated User Links in Modal -->
-        <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/" (click)="closeModal()">Home</a></li>
-        <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/login" (click)="closeModal()">Login</a></li>
-        <li class="mb-4"><a class="block py-2 px-4 hover:text-green-600" routerLink="/registration" (click)="closeModal()">Register</a></li>
+        <li class="mb-4">
+          <a
+            class="block py-2 px-4 hover:text-green-600"
+            routerLink="/"
+            (click)="closeModal()"
+            >Home</a
+          >
+        </li>
+        <li class="mb-4">
+          <a
+            class="block py-2 px-4 hover:text-green-600"
+            routerLink="/login"
+            (click)="closeModal()"
+            >Login</a
+          >
+        </li>
+        <li class="mb-4">
+          <a
+            class="block py-2 px-4 hover:text-green-600"
+            routerLink="/registration"
+            (click)="closeModal()"
+            >Register</a
+          >
+        </li>
       </ng-template>
     </ul>
   </div>
